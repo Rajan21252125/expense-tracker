@@ -1,50 +1,184 @@
-# Welcome to your Expo app 👋
+# 📱 Expense Tracker App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern personal finance tracker built using **React Native**, **Expo**, and **Clerk authentication**.
+Track expenses, manage accounts, analyze trends, and enjoy a clean, fast mobile experience.
 
-## Get started
+<p align="center">
+  <img src="./assets/images/logo_img.png" width="120" />
+</p>
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Features
 
-2. Start the app
+### 🔐 Authentication
 
-   ```bash
-   npx expo start
-   ```
+* Email + Password Login
+* OTP Verification
+* Resend OTP
+* Forgot Password
+* Reset Password
+* Secure session handling
+* Auto-clears session when expired
 
-In the output, you'll find options to open the app in a
+### 💰 Transactions
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+* Add Credit/Debit transactions
+* Categories selection
+* Delete transactions
+* Filter transactions
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### 📊 Dashboard
 
-## Get a fresh project
+* Monthly analytics
+* Category-wise breakdown
+* Real-time stats updating
 
-When you're ready, run:
+### 🎨 UI & UX
 
-```bash
-npm run reset-project
+* Multi color theme
+* NativeWind styling
+* Smooth animations
+* Keyboard-aware forms
+* Safe-area compatibility
+* Eye toggle for password visibility
+
+---
+
+## 📸 Screenshots
+
+
+| Dashboard                                         | Transactions                                         | Add Transaction                             |
+| ------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------- |
+| ![Dashboard](https://via.placeholder.com/250x450) | ![Transactions](https://via.placeholder.com/250x450) | ![Add](https://via.placeholder.com/250x450) |
+
+| Sign In                                        | OTP Screen                                  | Reset Password                                |
+| ---------------------------------------------- | ------------------------------------------- | --------------------------------------------- |
+| ![SignIn](https://via.placeholder.com/250x450) | ![OTP](https://via.placeholder.com/250x450) | ![Reset](https://via.placeholder.com/250x450) |
+
+---
+
+## 🔧 Installation
+
+### 1️⃣ Clone the repo
+
+```sh
+git clone https://github.com/Rajan21252125/expense-tracker
+cd expense-tracker
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2️⃣ Install dependencies
 
-## Learn more
+```sh
+npm install
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+### 3️⃣ Environment Variables
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Create a `.env` file:
 
-## Join the community
+```
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=your_key_here
+```
 
-Join our community of developers creating universal apps.
+### 4️⃣ Start the app
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```sh
+npx expo start
+```
+
+---
+
+## 📦 Building an Android APK (EAS Build)
+
+Install EAS CLI:
+
+```sh
+npm install -g eas-cli
+```
+
+Login:
+
+```sh
+eas login
+```
+
+Build APK:
+
+```sh
+eas build -p android --profile preview
+```
+
+Production APK:
+
+```sh
+eas build -p android --profile production
+```
+
+---
+
+## 🔗 Backend Setup
+
+This app connects to your backend API:
+
+### Clone Backend Repo
+
+```sh
+git clone https://github.com/Rajan21252125/expense-tracker-backend
+cd expense-tracker-backend
+npm install
+npm start
+```
+
+Your mobile app will communicate using:
+
+```
+EXPO_PUBLIC_API_URL=<your-backend-url>
+```
+
+---
+
+## 🧱 Architecture Overview
+
+```
+React Native UI
+   ↓
+Expo Router Navigation
+   ↓
+Clerk Authentication
+   ↓
+Backend API (Node.js + Express)
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Category   | Technology                 |
+| ---------- | -------------------------- |
+| Mobile     | React Native (Expo SDK 54) |
+| Navigation | Expo Router                |
+| Auth       | Clerk                      |
+| DB         | Postgre SQL                |
+| Storage    | AsyncStorage               |
+| Charts     | Recharts                   |
+| Styling    | NativeWind                 |
+| Backend    | Node + Express             |
+
+---
+
+## 🙋 Author
+
+**Rajan Gupta**
+GitHub: [https://github.com/Rajan21252125](https://github.com/Rajan21252125)
+
+---
+
+## ⭐ Want Enhancements?
+
+Ask for:
+
+* **Advanced README sections**
+* **API documentation**
+* **UX screenshots gallery**
+* **Badges & project banner**

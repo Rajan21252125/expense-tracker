@@ -1,11 +1,10 @@
 // styles/home.styles.js
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../constants/Colors";
 
-export const styles = StyleSheet.create({
+export const homeStyle = (theme) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: theme.background,
   },
   content: {
     padding: 20,
@@ -33,13 +32,13 @@ export const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: 14,
-    color: COLORS.textLight,
+    color: theme.textLight,
     marginBottom: 2,
   },
   usernameText: {
     fontSize: 16,
     fontWeight: "600",
-    color: COLORS.text,
+    color: theme.text,
   },
   headerRight: {
     flexDirection: "row",
@@ -49,10 +48,10 @@ export const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 28,
     fontWeight: "bold",
-    color: COLORS.text,
+    color: theme.text,
   },
   addButton: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: theme.primary,
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: 24,
@@ -65,14 +64,14 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   addButtonText: {
-    color: COLORS.white,
+    color: theme.white,
     fontWeight: "600",
     marginLeft: 4,
   },
   logoutButton: {
     padding: 10,
     borderRadius: 20,
-    backgroundColor: COLORS.card,
+    backgroundColor: theme.card,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.05,
@@ -80,11 +79,11 @@ export const styles = StyleSheet.create({
     elevation: 1,
   },
   balanceCard: {
-    backgroundColor: COLORS.card,
+    backgroundColor: theme.card,
     borderRadius: 20,
     padding: 20,
     marginBottom: 20,
-    shadowColor: COLORS.shadow,
+    shadowColor: theme.shadow,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -95,13 +94,13 @@ export const styles = StyleSheet.create({
   },
   balanceTitle: {
     fontSize: 16,
-    color: COLORS.textLight,
+    color: theme.textLight,
     marginBottom: 8,
   },
   balanceAmount: {
     fontSize: 32,
     fontWeight: "bold",
-    color: COLORS.text,
+    color: theme.text,
     marginBottom: 20,
   },
   balanceStats: {
@@ -114,11 +113,11 @@ export const styles = StyleSheet.create({
   },
   statDivider: {
     borderRightWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: theme.border,
   },
   balanceStatLabel: {
     fontSize: 14,
-    color: COLORS.textLight,
+    color: theme.textLight,
     marginBottom: 4,
   },
   balanceStatAmount: {
@@ -128,16 +127,16 @@ export const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: COLORS.text,
+    color: theme.text,
     marginBottom: 15,
   },
   transactionCard: {
-    backgroundColor: COLORS.card,
+    backgroundColor: theme.card,
     borderRadius: 12,
     marginBottom: 10,
     flexDirection: "row",
     alignItems: "center",
-    shadowColor: COLORS.shadow,
+    shadowColor: theme.shadow,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -167,12 +166,12 @@ export const styles = StyleSheet.create({
   transactionTitle: {
     fontSize: 16,
     fontWeight: "500",
-    color: COLORS.text,
+    color: theme.text,
     marginBottom: 4,
   },
   transactionCategory: {
     fontSize: 14,
-    color: COLORS.textLight,
+    color: theme.textLight,
   },
   transactionRight: {
     alignItems: "flex-end",
@@ -184,12 +183,12 @@ export const styles = StyleSheet.create({
   },
   transactionDate: {
     fontSize: 12,
-    color: COLORS.textLight,
+    color: theme.textLight,
   },
   deleteButton: {
     padding: 15,
     borderLeftWidth: 1,
-    borderLeftColor: COLORS.border,
+    borderLeftColor: theme.border,
   },
   transactionsContainer: {
     marginBottom: 20,
@@ -198,16 +197,16 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: COLORS.background,
+    backgroundColor: theme.background,
   },
   emptyState: {
-    backgroundColor: COLORS.card,
+    backgroundColor: theme.card,
     borderRadius: 16,
     padding: 30,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    shadowColor: COLORS.shadow,
+    shadowColor: theme.shadow,
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
@@ -219,18 +218,18 @@ export const styles = StyleSheet.create({
   emptyStateTitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: COLORS.text,
+    color: theme.text,
     marginBottom: 8,
   },
   emptyStateText: {
-    color: COLORS.textLight,
+    color: theme.textLight,
     fontSize: 14,
     textAlign: "center",
     marginBottom: 20,
     lineHeight: 20,
   },
   emptyStateButton: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: theme.primary,
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 10,
@@ -243,7 +242,7 @@ export const styles = StyleSheet.create({
     elevation: 2,
   },
   emptyStateButtonText: {
-    color: COLORS.white,
+    color: theme.white,
     fontWeight: "600",
     marginLeft: 6,
   },

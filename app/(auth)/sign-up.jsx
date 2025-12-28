@@ -2,15 +2,17 @@ import { useState } from 'react'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useSignUp } from '@clerk/clerk-expo'
 import { Link, useRouter } from 'expo-router';
-import { styles } from '../../assets/styles/auth.styles.js';
+import { styles as authStyle } from '../../assets/styles/auth.styles.js';
 import { Ionicons } from "@expo/vector-icons";
-import { COLORS } from '../../constants/Colors.js';
 import { Image } from 'expo-image';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useTheme } from '../../context/ThemeContext.js';
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp()
   const router = useRouter()
+  const { theme } = useTheme();
+  const styles = authStyle(theme);
 
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('')
@@ -75,10 +77,10 @@ export default function SignUpScreen() {
         <Text style={styles.verificationTitle}>Verify your email</Text>
         {error ? (
           <View style={styles.errorBox}>
-            <Ionicons name="alert-circle" size={20} color={COLORS.expense} />
+            <Ionicons name="alert-circle" size={20} color={theme.expense} />
             <Text style={styles.errorText}>{"something went wrong"}</Text>
             <TouchableOpacity onPress={() => setError(null)}>
-              <Ionicons name="close-circle" size={20} color={COLORS.expense} />
+              <Ionicons name="close-circle" size={20} color={theme.expense} />
             </TouchableOpacity>
           </View>
         ) : null
@@ -104,10 +106,10 @@ export default function SignUpScreen() {
         <Text style={styles.title}>Create a Account</Text>
         {error ? (
           <View style={styles.errorBox}>
-            <Ionicons name="alert-circle" size={20} color={COLORS.expense} />
+            <Ionicons name="alert-circle" size={20} color={theme.expense} />
             <Text style={styles.errorText}>{"something went wrong"}</Text>
             <TouchableOpacity onPress={() => setError(null)}>
-              <Ionicons name="close-circle" size={20} color={COLORS.expense} />
+              <Ionicons name="close-circle" size={20} color={theme.expense} />
             </TouchableOpacity>
           </View>
         ) : null

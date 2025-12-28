@@ -1,11 +1,10 @@
 // styles/create.styles.js
 import { StyleSheet } from "react-native";
-import { COLORS } from "../../constants/Colors";
 
-export const styles = StyleSheet.create({
+export const styles = (theme) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.background,
+    backgroundColor: theme.background,
   },
   header: {
     flexDirection: "row",
@@ -13,12 +12,12 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+    borderBottomColor: theme.border,
   },
   headerTitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: COLORS.text,
+    color: theme.text,
   },
   backButton: {
     padding: 5,
@@ -33,11 +32,11 @@ export const styles = StyleSheet.create({
   },
   saveButton: {
     fontSize: 16,
-    color: COLORS.primary,
+    color: theme.primary,
     fontWeight: "600",
   },
   card: {
-    backgroundColor: COLORS.card,
+    backgroundColor: theme.card,
     margin: 16,
     borderRadius: 16,
     padding: 16,
@@ -60,52 +59,52 @@ export const styles = StyleSheet.create({
     paddingVertical: 12,
     borderRadius: 25,
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: theme.border,
   },
   typeButtonActive: {
-    backgroundColor: COLORS.primary,
-    borderColor: COLORS.primary,
+    backgroundColor: theme.primary,
+    borderColor: theme.primary,
   },
   typeIcon: {
     marginRight: 8,
   },
   typeButtonText: {
-    color: COLORS.text,
+    color: theme.text,
     fontSize: 16,
     fontWeight: "500",
   },
   typeButtonTextActive: {
-    color: COLORS.white,
+    color: theme.white,
   },
   amountContainer: {
     flexDirection: "row",
     alignItems: "center",
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+    borderBottomColor: theme.border,
     paddingBottom: 16,
     marginBottom: 20,
   },
   currencySymbol: {
     fontSize: 32,
     fontWeight: "bold",
-    color: COLORS.text,
+    color: theme.text,
     marginRight: 8,
   },
   amountInput: {
     flex: 1,
     fontSize: 36,
     fontWeight: "bold",
-    color: COLORS.text,
+    color: theme.text,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: COLORS.border,
+    borderColor: theme.border,
     borderRadius: 12,
     padding: 4,
     marginBottom: 20,
-    backgroundColor: COLORS.white,
+    backgroundColor: theme.white,
   },
   inputIcon: {
     marginHorizontal: 12,
@@ -114,12 +113,12 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     fontSize: 16,
-    color: COLORS.text,
+    color: theme.text,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "600",
-    color: COLORS.text,
+    color: theme.text,
     marginBottom: 15,
     marginTop: 10,
     flexDirection: "row",
@@ -137,22 +136,22 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: COLORS.border,
-    backgroundColor: COLORS.white,
+    borderColor: theme.border,
+    backgroundColor: theme.white,
   },
   categoryButtonActive: {
-    backgroundColor: COLORS.primary,
-    borderColor: COLORS.primary,
+    backgroundColor: theme.primary,
+    borderColor: theme.primary,
   },
   categoryIcon: {
     marginRight: 6,
   },
   categoryButtonText: {
-    color: COLORS.text,
+    color: theme.text,
     fontSize: 14,
   },
   categoryButtonTextActive: {
-    color: COLORS.white,
+    color: theme.white,
   },
   loadingContainer: {
     padding: 20,

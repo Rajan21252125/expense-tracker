@@ -2,56 +2,78 @@ import { useSignIn } from '@clerk/clerk-expo'
 import { Link, useRouter } from 'expo-router'
 import { Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { useState } from 'react';
-import { COLORS } from '../../constants/Colors.js';
 import { Image } from 'expo-image';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { styles } from '../../assets/styles/auth.styles';
+import { styles as authStyle } from '../../assets/styles/auth.styles';
 import { Ionicons } from "@expo/vector-icons";
+import { useTheme } from "../../context/ThemeContext.js";
 
 
 export default function Page() {
   const { signIn, setActive, isLoaded } = useSignIn()
   const router = useRouter()
+  const { theme } = useTheme();
+  const styles = authStyle(theme);
 
   const [emailAddress, setEmailAddress] = useState('')
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
 
   // Handle the submission of the sign-in form
   const onSignInPress = async () => {
-    setLoading(true);
-    if (!isLoaded) return
+  setLoading(true);
+  if (!isLoaded) return;
 
-    // Start the sign-in process using the email and password provided
-    try {
-      const signInAttempt = await signIn.create({
-        identifier: emailAddress,
-        password,
-      })
+  try {
+    const signInAttempt = await signIn.create({
+      identifier: emailAddress,   // ✅ FIXED
+      password,
+    });
 
-      // If sign-in process is complete, set the created session as active
-      // and redirect the user
-      if (signInAttempt.status === 'complete') {
-        await setActive({ session: signInAttempt.createdSessionId })
-        router.replace('/')
-      } else {
-        // If the status isn't complete, check why. User might need to
-        // complete further steps.
-        console.error(JSON.stringify(signInAttempt, null, 2))
-      }
-    } catch (err) {
-      if (err?.errors?.[0]?.code === 'form_password_incorrect') {
-        setError('Password is incorrect. Please try again.')
-      } else {
-        setError('An unexpected error occurred. Please try again.')
-      }
-      // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
-      console.error(JSON.stringify(err, null, 2))
+    if (signInAttempt.status === "needs_second_factor") {
+      await signInAttempt.prepareSecondFactor({
+        strategy: "email_code",
+      });
+      router.push({
+        pathname: "/(auth)/verify-otp",
+        params: {
+          emailAddressId: signInAttempt.supportedSecondFactors[0].emailAddressId,
+          signInId: signInAttempt.id,
+        },
+      });
+      console.log("MFA required, redirecting to OTP verification");
+      return;
     }
-    setLoading(false);
+
+    if (signInAttempt.status === "complete") {
+      await setActive({ session: signInAttempt.createdSessionId });
+      router.replace('/');
+      return;
+    }
+
+    console.error("Unexpected state:", JSON.stringify(signInAttempt, null, 2));
+
+  } catch (err) {
+    console.log("FULL ERROR:", JSON.stringify(err, null, 2));
+    console.log(err);
+
+    if (err?.errors?.length > 0) {
+      console.log("CLERK ERROR:", err.errors[0].message);
+    }
+
+    if (err?.errors?.[0]?.code === 'form_password_incorrect') {
+      setError('Password is incorrect. Please try again.');
+    } else {
+      setError('An unexpected error occurred. Please try again.');
+    }
   }
+
+  setLoading(false);
+};
+
 
   if (loading) {
     return (
@@ -68,10 +90,10 @@ export default function Page() {
         <Text style={styles.title}>Welcome Back</Text>
         {error ? (
           <View style={styles.errorBox}>
-            <Ionicons name="alert-circle" size={20} color={COLORS.expense} />
+            <Ionicons name="alert-circle" size={20} color={theme.expense} />
             <Text style={styles.errorText}>{"something went wrong"}</Text>
             <TouchableOpacity onPress={() => setError(null)}>
-              <Ionicons name="close-circle" size={20} color={COLORS.expense} />
+              <Ionicons name="close-circle" size={20} color={theme.expense} />
             </TouchableOpacity>
           </View>
         ) : null
@@ -84,14 +106,38 @@ export default function Page() {
           placeholderTextColor="#9A8478"
           onChangeText={(email) => setEmailAddress(email)}
         />
-        <TextInput
-          style={[styles.input, error && styles.errorInput]}
-          placeholderTextColor="#9A8478"
-          value={password}
-          placeholder="Enter password"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
+        <View style={{ width: "100%", position: "relative" }}>
+          <TextInput
+            style={[styles.input, error && styles.errorInput]}
+            placeholderTextColor="#9A8478"
+            value={password}
+            placeholder="Enter password"
+            secureTextEntry={!showPassword}
+            onChangeText={(password) => setPassword(password)}
+          />
+
+          <TouchableOpacity
+            onPress={() => setShowPassword(!showPassword)}
+            style={{
+              position: "absolute",
+              right: 15,
+              top: "40%",
+              transform: [{ translateY: -12 }],
+            }}
+          >
+            <Ionicons
+              name={showPassword ? "eye-off" : "eye"}
+              size={22}
+              color={theme.primary}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.linksContainer}>
+          <View />
+          <Link href="/forgot-password" style={styles.link}>
+            <Text style={styles.linkText}>Forgot Password</Text>
+          </Link>
+        </View>
         <TouchableOpacity  onPress={onSignInPress} style={styles.button}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>

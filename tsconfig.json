@@ -11,7 +11,10 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "app/_layout.jsx",
+    "app/index.jsx",
+    "components/SignOutButton.jsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/_layout.jsx", "app/index.jsx"  ]
+  ]
 }
