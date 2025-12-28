@@ -50,11 +50,11 @@ Track expenses, manage accounts, analyze trends, and enjoy a clean, fast mobile 
 
 | Dashboard                                         | Filter                                         | Add Transaction                             |
 | ------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------- |
-| ![Dashboard]![alt text](image.png) | ![Transactions]![alt text](image-1.png) | ![Add]![alt text](image-2.png) |
+| ![alt text](image.png) | ![alt text](image-1.png) | ![alt text](image-2.png) |
 
 | Sign In                                        | OTP Screen                                  | Reset Password                                |
 | ---------------------------------------------- | ------------------------------------------- | --------------------------------------------- |
-| ![SignIn]![alt text](image-3.png) | ![OTP]![alt text](image-4.png) | ![Reset]![alt text](image-5.png) |
+| ![alt text](image-3.png) | ![alt text](image-4.png) | ![alt text](image-5.png) |
 
 ---
 
