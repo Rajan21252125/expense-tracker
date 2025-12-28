@@ -48,13 +48,13 @@ Track expenses, manage accounts, analyze trends, and enjoy a clean, fast mobile 
 ## 📸 Screenshots
 
 
-| Dashboard                                         | Transactions                                         | Add Transaction                             |
+| Dashboard                                         | Filter                                         | Add Transaction                             |
 | ------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------- |
-| ![Dashboard](https://via.placeholder.com/250x450) | ![Transactions](https://via.placeholder.com/250x450) | ![Add](https://via.placeholder.com/250x450) |
+| ![Dashboard]![alt text](image.png) | ![Transactions]![alt text](image-1.png) | ![Add]![alt text](image-2.png) |
 
 | Sign In                                        | OTP Screen                                  | Reset Password                                |
 | ---------------------------------------------- | ------------------------------------------- | --------------------------------------------- |
-| ![SignIn](https://via.placeholder.com/250x450) | ![OTP](https://via.placeholder.com/250x450) | ![Reset](https://via.placeholder.com/250x450) |
+| ![SignIn]![alt text](image-3.png) | ![OTP]![alt text](image-4.png) | ![Reset]![alt text](image-5.png) |
 
 ---
 
