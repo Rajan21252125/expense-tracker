@@ -68,7 +68,7 @@ export default function Page() {
             <View style={styles.welcomeContainer}>
               <Text style={styles.welcomeText}>Welcome,</Text>
               <Text style={styles.usernameText}>
-                {user?.emailAddresses[0].emailAddress.split('@')[0]}
+                {user?.fullName}
               </Text>
             </View>
             <View style={styles.headerRight}>

@@ -19,6 +19,8 @@ export default function SignUpScreen() {
   const [pendingVerification, setPendingVerification] = useState(false)
   const [code, setCode] = useState('');
   const [error, setError] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   // Handle submission of sign-up form
   const onSignUpPress = async () => {
@@ -27,6 +29,7 @@ export default function SignUpScreen() {
     // Start sign-up process using email and password provided
     try {
       await signUp.create({
+        firstName,
         emailAddress,
         password,
       })
@@ -116,20 +119,45 @@ export default function SignUpScreen() {
         }
         <TextInput
           style={[styles.input, error && styles.errorInput]}
+          placeholder="First Name"
+          placeholderTextColor="#9A8478"
+          value={firstName}
+          onChangeText={setFirstName}
+        />
+        <TextInput
+          style={[styles.input, error && styles.errorInput]}
           autoCapitalize="none"
           value={emailAddress}
           placeholder="Enter email"
           placeholderTextColor="#9A8478"
           onChangeText={(email) => setEmailAddress(email)}
         />
-        <TextInput
-          style={[styles.input, error && styles.errorInput]}
-          placeholderTextColor="#9A8478"
-          value={password}
-          placeholder="Enter password"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
+        <View style={{ width: "100%", position: "relative" }}>
+          <TextInput
+            style={[styles.input, error && styles.errorInput]}
+            placeholderTextColor="#9A8478"
+            value={password}
+            placeholder="Enter password"
+            secureTextEntry={!showPassword}
+            onChangeText={(password) => setPassword(password)}
+          />
+
+          <TouchableOpacity
+            onPress={() => setShowPassword(!showPassword)}
+            style={{
+              position: "absolute",
+              right: 15,
+              top: "40%",
+              transform: [{ translateY: -12 }],
+            }}
+          >
+            <Ionicons
+              name={showPassword ? "eye-off" : "eye"}
+              size={22}
+              color={theme.primary}
+            />
+          </TouchableOpacity>
+        </View>
         <TouchableOpacity  onPress={onSignUpPress} style={styles.button}>
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
