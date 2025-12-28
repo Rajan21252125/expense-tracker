@@ -173,12 +173,3 @@ Backend API (Node.js + Express)
 GitHub: [https://github.com/Rajan21252125](https://github.com/Rajan21252125)
 
 ---
-
-## ⭐ Want Enhancements?
-
-Ask for:
-
-* **Advanced README sections**
-* **API documentation**
-* **UX screenshots gallery**
-* **Badges & project banner**
