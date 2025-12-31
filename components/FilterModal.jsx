@@ -30,7 +30,7 @@ export default function FilterModal({ visible, onClose, filters, setFilters }) {
   const resetFilters = () => {
     const current = getCurrentMonthRange();
     setLocal({
-      type: "all",
+      type: "All",
       category: "All",
       month: "current",
       ...current,
@@ -110,7 +110,7 @@ export default function FilterModal({ visible, onClose, filters, setFilters }) {
           </Text>
 
           <View style={{ flexDirection: "row", gap: 10, marginTop: 10 }}>
-            {["all", "income", "expense"].map((t) => {
+            {["All", "Income", "Expense"].map((t) => {
               const active = local.type === t;
               return (
                 <TouchableOpacity

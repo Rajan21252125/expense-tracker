@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { homeStyle } from "../assets/styles/home.styles";
-import { formatDate } from "../lib/utility.js";
+import { formatCurrencyINR, formatDate } from "../lib/utility.js";
 import { useTheme } from "../context/ThemeContext.js";
 
 // Map categories to their respective icons
@@ -36,7 +36,7 @@ export const TransactionItem = ({ item, onDelete }) => {
           <Text
             style={[styles.transactionAmount, { color: isIncome ? theme.income : theme.expense }]}
           >
-            {isIncome ? "+" : "-"}${Math.abs(parseFloat(item.amount)).toFixed(2)}
+            {isIncome ? "+" : "-"}{formatCurrencyINR(Math.abs(parseFloat(item.amount)))}
           </Text>
           <Text style={styles.transactionDate}>{formatDate(item.created_at)}</Text>
         </View>

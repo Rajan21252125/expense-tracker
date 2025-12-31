@@ -5,8 +5,8 @@ import { useCallback, useState } from "react";
 import { Alert } from "react-native";
 // import { API_URL } from "../constants/api";
 
-const API_URL = "https://expense-tracker-backend-7p5m.onrender.com/api";
-// const API_URL = "https://lauditorily-entozoic-octavio.ngrok-free.dev/api";
+// const API_URL = "https://expense-tracker-backend-7p5m.onrender.com/api";
+const API_URL = "https://lauditorily-entozoic-octavio.ngrok-free.dev/api";
 
 export const useTransactions = (userId) => {
   const [transactions, setTransactions] = useState([]);
@@ -28,7 +28,7 @@ export const useTransactions = (userId) => {
   };
 
   const [filters, setFilters] = useState({
-    type: "all",
+    type: "All",
     category: "All",
     month: "current",
     ...getCurrentMonthRange()
@@ -60,7 +60,7 @@ export const useTransactions = (userId) => {
         `${API_URL}/transactions/${userId}?${query}`
       );
       const data = await response.json();
-      setTransactions(data);
+      setTransactions(data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
     } catch (error) {
       console.error("Error fetching transactions:", error);
     }
